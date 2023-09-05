@@ -71,20 +71,74 @@ We are now at the last part of step by step guide on how to simulate STM32 proje
 
 
 ## STM 32 CUBE PROGRAM :
+```
+###Developed By:Maheswaran.K
+###Ref No:212222110023
+```
+
+```
+#include "main.h"
+#include "stdbool.h"
+bool pbstatus;
+int main(void)
+{
+  /* USER CODE BEGIN 1 */
+
+  /* USER CODE END 1 */
+
+  /* MCU Configuration--------------------------------------------------------*/
+
+  /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
+  HAL_Init();
+
+  /* USER CODE BEGIN Init */
+
+  /* USER CODE END Init */
+
+  /* Configure the system clock */
+  SystemClock_Config();
+
+  /* USER CODE BEGIN SysInit */
+
+  /* USER CODE END SysInit */
+
+  /* Initialize all configured peripherals */
+  MX_GPIO_Init();
+  /* USER CODE BEGIN 2 */
+
+  /* USER CODE END 2 */
+
+  /* Infinite loop */
+  /* USER CODE BEGIN WHILE */
+  while (1)
+  {
+    pbstatus = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_0);
+    if(pbstatus==0){
+    	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, GPIO_PIN_RESET);
+    	HAL_Delay(500);
+    	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, GPIO_PIN_SET);
+    	HAL_Delay(500);
+    }
+    else{
+    	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, GPIO_PIN_RESET);
+    }
+  }
+  /* USER CODE END 3 */
+}
+ ```
 
 
 
 
 ## Output screen shots of proteus  :
-
-
-
+## BUTTON OFF LED OFF CONDITION
+![Screenshot 2023-09-05 092211](https://github.com/MAHESWARAN2004/EXPERIMENT--03-SIMULATION-OF-PUSHBUTTON-AND-LED-WITH-PROTEUS-/assets/119478181/39cc2818-32f7-489e-8345-1215a8d65333)
+## BUTTON ON LED ON CONDITION
+![Screenshot 2023-09-05 092244](https://github.com/MAHESWARAN2004/EXPERIMENT--03-SIMULATION-OF-PUSHBUTTON-AND-LED-WITH-PROTEUS-/assets/119478181/bfaef4c0-ee7f-4766-9698-9c4d83cbab46)
 
 ## Proteus layout(Add pdf screen shot of circuit here)
- 
- 
- 
- 
+![Screenshot 2023-09-05 093132](https://github.com/MAHESWARAN2004/EXPERIMENT--03-SIMULATION-OF-PUSHBUTTON-AND-LED-WITH-PROTEUS-/assets/119478181/e049848e-028d-47c3-a20a-2d1ff991b7e7)
+
 ## Result :
 Interfacing a digital output and digital input  with ARM microcontroller are simulated in proteus and the results are verified.
 
